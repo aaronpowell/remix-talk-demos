@@ -16,3 +16,11 @@ ul {
 li {
     min-width: 200px;
 }
+
+.right {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}

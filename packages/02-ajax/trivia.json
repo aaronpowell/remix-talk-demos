@@ -1,5 +1,4 @@
-{
-  "questions": [
+{ "questions": [
     {
       "id": "0",
       "category": "Science: Computers",
@@ -425,11 +424,7 @@
       "difficulty": "medium",
       "question": "The name of technology company HP stands for what?",
       "correct_answer": "Hewlett-Packard",
-      "incorrect_answers": [
-        "Howard Packmann",
-        "Husker-Pollosk",
-        "Hellman-Pohl"
-      ],
+      "incorrect_answers": ["Howard Packmann", "Husker-Pollosk", "Hellman-Pohl"],
       "modelType": "Question"
     },
     {
@@ -705,11 +700,7 @@
       "difficulty": "medium",
       "question": "In Need For Speed Most Wanted (2005), what do you drive at the beginning of the career mode?",
       "correct_answer": "BMW M3 GTR",
-      "incorrect_answers": [
-        "Porsche 911 Turbo",
-        "Nissan 240SX",
-        "Ford Mustang"
-      ],
+      "incorrect_answers": ["Porsche 911 Turbo", "Nissan 240SX", "Ford Mustang"],
       "modelType": "Question"
     },
     {
@@ -1128,5 +1119,4 @@
       "incorrect_answers": ["Chris Redfield", "Sherry Birkin", "Helena Harper"],
       "modelType": "Question"
     }
-  ]
-}
+  ]}
