@@ -1,0 +1,23 @@
+{
+  "name": "NDC Sydney demos for Remix talk",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": { "VARIANT": "18-bullseye" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "jtjoo.classic-asp-html"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install --workspaces",
+  "remoteUser": "node",
+  "features": {
+    "git": "os-provided",
+    "github-cli": "latest",
+    "azure-cli": "latest"
+  }
+}
