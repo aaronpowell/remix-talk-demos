@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Loading } from "./Loading";
 
@@ -46,7 +46,7 @@ function App() {
     pickQuestion();
   }, [questions]);
 
-  const checkAnswer = (e) => {
+  const checkAnswer = (e: React.MouseEvent) => {
     e.preventDefault();
     if (currentQuestion && currentAnswer) {
       setIsCorrect(currentQuestion.correct_answer === currentAnswer);
