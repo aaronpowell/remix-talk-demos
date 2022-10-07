@@ -1,0 +1,30 @@
+#root {
+  width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 10px;
+  justify-content: center;
+}
+
+li {
+  min-width: 200px;
+}
+
+.right {
+  color: green;
+}
+
+.wrong {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
