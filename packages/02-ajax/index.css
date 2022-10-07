@@ -24,3 +24,7 @@ li {
 .wrong {
     color: red;
 }
+
+.hidden {
+    display: none;
+}

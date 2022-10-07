@@ -43,7 +43,7 @@ SET question = o("questions")(r)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia App - Classic ASP Style</title>
+    <title>Trivia App - AJAX Style</title>
     <link href="index.css" rel="stylesheet" />
 </head>
 <body>
@@ -51,7 +51,7 @@ SET question = o("questions")(r)
     <section role="main">
         <h2><% Response.Write(question("question")) %></h2>
         <form method="post" action="/Validate.asp">
-        <input type="hidden" value="<% Response.Write(r) %>" name="questionId" />
+        <input type="hidden" value="<% Response.Write(r) %>" name="questionId" id="questionId" />
         <ul>
             <%
             DIM answer
@@ -65,6 +65,12 @@ SET question = o("questions")(r)
         </ul>
         <button type="submit">Check your answer</button>
         </form>
+
+        <div class="result hidden">
+            <p></p>
+            <a href="Default.asp">Play again?</a>
+        </div>
     </section>
+    <script src="ajax.js"></script>
 </body>
 </html>
