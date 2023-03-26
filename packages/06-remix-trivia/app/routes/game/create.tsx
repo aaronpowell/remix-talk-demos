@@ -18,8 +18,7 @@ export const action: ActionFunction = async ({ request }) => {
   const { gameContainer, questionsContainer } = getContainers();
   const questions = await questionsContainer.items
     .query<QuestionModel>({
-      query: "SELECT * FROM c WHERE c.modelType = @type",
-      parameters: [{ name: "@type", value: ModelType.Question }],
+      query: "SELECT * FROM c",
     })
     .fetchAll();
 
