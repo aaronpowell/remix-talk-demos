@@ -1,8 +1,13 @@
-import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
+import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-import { useLoaderData, useParams } from "@remix-run/react";
-import { GameModel, GameState } from "types";
-import { ModelType } from "types";
+import {
+  Form,
+  useLoaderData,
+  useNavigation,
+  useParams,
+} from "@remix-run/react";
+import { GameState } from "types";
 import { arrayRandomiser, getContainers, getGame, idGenerator } from "utils";
 
 type LoaderData = {
@@ -88,13 +93,18 @@ export const action: ActionFunction = async ({ request, params }) => {
 const PlayGame = () => {
   const params = useParams();
   const data = useLoaderData<LoaderData>();
+  const navigation = useNavigation();
+
+  const isSubmittingAnswer =
+    navigation.state === "submitting" &&
+    navigation.formData.get("_action") === "submitAnswer";
   return (
     <div>
       <h1>Playing {params["gameId"]}</h1>
       <h2 dangerouslySetInnerHTML={{ __html: data.question.question }}></h2>
-      <form method="post">
+      <Form method="post">
         <input type="hidden" value={data.question.id} name="questionId" />
-        <fieldset>
+        <fieldset disabled={isSubmittingAnswer}>
           <ul>
             {data.question.answers.map((a) => {
               return (
@@ -108,8 +118,15 @@ const PlayGame = () => {
             })}
           </ul>
         </fieldset>
-        <button type="submit">Submit</button>
-      </form>
+        <button
+          type="submit"
+          name="_action"
+          value="submitAnswer"
+          disabled={isSubmittingAnswer}
+        >
+          {isSubmittingAnswer ? "Submitting..." : "Submit Answer"}
+        </button>
+      </Form>
     </div>
   );
 };

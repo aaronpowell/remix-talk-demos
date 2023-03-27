@@ -1,7 +1,7 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Form, useLoaderData, useNavigation } from "@remix-run/react";
 import type { GameModel, UserModel } from "types";
 import { GameState } from "types";
 import { ModelType } from "types";
@@ -55,18 +55,25 @@ export const action: ActionFunction = async ({ request, params }) => {
 
 const JoinGame = () => {
   const { game } = useLoaderData<{ game: GameModel }>();
+  const navigation = useNavigation();
+
+  const isJoiningGame =
+    navigation.state === "submitting" &&
+    navigation.formData?.get("_action") === "join";
   return (
     <div>
       <h1>Join: {game.id}</h1>
-      <form action={`/game/join/${game.id}`} method="post">
-        <fieldset>
+      <Form action={`/game/join/${game.id}`} method="post">
+        <fieldset disabled={isJoiningGame}>
           <label htmlFor="name">Player name:</label>
           <input type="text" name="name" id="name" placeholder="aaronpowell" />
         </fieldset>
-        <fieldset>
-          <button type="submit">Join</button>
+        <fieldset disabled={isJoiningGame}>
+          <button type="submit" name="_action" value="join">
+            Join
+          </button>
         </fieldset>
-      </form>
+      </Form>
     </div>
   );
 };
